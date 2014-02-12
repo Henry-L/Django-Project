@@ -1,3 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+
+body {
+	background-color:#E0EEE0;
+
+	}	
+
+a{
+	font-family: Georgia;
+	font-size: 10;
+	font-weight: bold;
+	}
+	
+div {
+	margin: 20px 0px 0px 15px;
+	}
+	
+h1 {
+	font-family: Tahoma;
+	font-weight: bold;
+	}
+	
+</style>
+</head>
+
+<body>
+<div>
+
+<h1> Poll List </h1>
+
 {% if latest_poll_list %}
 	<ul>
 	{% for poll in latest_poll_list %}

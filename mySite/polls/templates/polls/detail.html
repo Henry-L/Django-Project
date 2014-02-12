@@ -1,1 +1,38 @@
-<br><font size='12' face='verdana'>You're looking at poll HLDER.</font>
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+
+body {
+	background-color:beige;
+
+	}	
+
+p{
+	font-family: Verdana;
+	font-size: 9;
+	font-weight: bold;
+	}
+	
+div {
+	margin: 20px 0px 0px 15px;
+	}
+	
+</style>
+</head>
+
+<body>
+<div>
+
+<p>Poll #{{ poll.id }}</p>
+
+<ul>
+{% for choice in poll.choice_set.all %}
+    <li><p>{{ choice.choice_text }}<p></li>
+{% endfor %}
+</ul>
+</div>
+</body>
+
+</html>
