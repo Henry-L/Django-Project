@@ -11,12 +11,16 @@ body {
 
 p{
 	font-family: Verdana;
-	font-size: 9;
-	font-weight: bold;
+	font-size: 8;
 	}
 	
 div {
 	margin: 20px 0px 0px 15px;
+	}
+	
+h1 {
+	font-family: Papyrus;
+	font-weight: bold;
 	}
 	
 </style>
@@ -25,13 +29,27 @@ div {
 <body>
 <div>
 
-<p>Poll #{{ poll.id }}</p>
+<h1>Poll #{{ poll.id }}: {{ poll.question }}</h1>
 
+<!--
 <ul>
 {% for choice in poll.choice_set.all %}
     <li><p>{{ choice.choice_text }}<p></li>
 {% endfor %}
 </ul>
+-->
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:vote' poll.id %}" method ="post">
+{% csrf_token %}
+{% for choice in poll.choice_set.all %}
+	<input type="radio" name="choice" id="choice{{forloop.counter }}" value="{{ choice.id }}" />
+	<label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br><br>
+{% endfor %}
+<input type="submit" value="Vote" />
+</form>
+
 </div>
 </body>
 
